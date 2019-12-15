@@ -19,14 +19,14 @@ namespace Regression
             InitializeComponent();
         }
 
-        DataTable initTable = new DataTable();
-        DataTable outputTable = new DataTable();
-
+        DataTable initTable = new DataTable();  //There is gonna be stored init data (The sequence of X:Y points)
+        DataTable outputTable = new DataTable(); //Table to store output coefficients
+        string[] columnTitles = null;
+        DataRow dr;
         private void OpenFileBtn_Click(object sender, EventArgs e)
         {
             var fileContent = string.Empty;
             var filePath = string.Empty;
-            string[] columnTitles = null;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\Users\\vladi\\Desktop";
@@ -47,7 +47,7 @@ namespace Regression
                         string newLine;
                         while ((newLine = reader.ReadLine()) != null)
                         {
-                            DataRow dr = initTable.NewRow();
+                            dr = initTable.NewRow();
                             string[] values = newLine.Split(' ');
                             for (int i = 0; i < values.Length; i++)
                             {
@@ -73,6 +73,26 @@ namespace Regression
                 seriesInit.YValueMembers = columnTitles[1];
             }
 
+        }
+
+        private void CalculateBtn_Click(object sender, EventArgs e)
+        {
+            //double[][] data = initTable.AsEnumerable().Select(x => new[] { Convert.ToDouble(x[0]), Convert.ToDouble(x[1]) }).ToArray();
+            double[] x = initTable.AsEnumerable()
+            .Select(row => Convert.ToDouble(row.Field<object>(columnTitles[0]), System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+            double[] y = initTable.AsEnumerable()
+            .Select(row => Convert.ToDouble(row.Field<object>(columnTitles[1]), System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+            double[] ans = LinearRegression.Solve(x, y);
+            outputTable.Columns.Add("Coefficient");
+            outputTable.Columns.Add("Value");
+            foreach (double coef in ans)
+            {
+                dr = outputTable.NewRow();
+                dr[0] = coef;
+                outputTable.Rows.Add(dr);
+            }
+            outputDataView.DataSource = outputTable;
+            outputDataView.Update();
         }
     }
 }
