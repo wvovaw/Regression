@@ -1,0 +1,9 @@
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\bin\Debug\Regression.exe.config
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\bin\Debug\Regression.exe
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\bin\Debug\Regression.pdb
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\obj\Debug\Regression.csprojAssemblyReference.cache
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\obj\Debug\Regression.Regression.resources
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\obj\Debug\Regression.Properties.Resources.resources
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\obj\Debug\Regression.csproj.GenerateResource.cache
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\obj\Debug\Regression.exe
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Regression\obj\Debug\Regression.pdb

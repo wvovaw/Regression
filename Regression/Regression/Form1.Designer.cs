@@ -77,6 +77,7 @@
             this.OpenFileBtn.TabIndex = 2;
             this.OpenFileBtn.Text = "Open file";
             this.OpenFileBtn.UseVisualStyleBackColor = true;
+            this.OpenFileBtn.Click += new System.EventHandler(this.OpenFileBtn_Click);
             // 
             // radioLinear
             // 
