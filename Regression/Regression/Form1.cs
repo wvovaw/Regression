@@ -20,6 +20,7 @@ namespace Regression
         }
 
         DataTable initTable = new DataTable();  //There is gonna be stored init data (The sequence of X:Y points)
+        DataTable regTable = new DataTable();   //There is gonna be the calculated data
         DataTable outputTable = new DataTable(); //Table to store output coefficients
         string[] columnTitles = null;
         DataRow dr;
@@ -64,35 +65,65 @@ namespace Regression
             chart.Series.Clear();
             Series seriesInit = chart.Series.Add("Init points");
             seriesInit.ChartType = SeriesChartType.Point;
-            //Series seriesReg = chart.Series.Add("Regression line");
-            //seriesReg.ChartType = SeriesChartType.Spline;
             chart.DataSource = initTable;
-            if(columnTitles.Length != 0)
+            if (columnTitles.Length != 0)
             {
                 seriesInit.XValueMember = columnTitles[0];
                 seriesInit.YValueMembers = columnTitles[1];
             }
-
         }
 
         private void CalculateBtn_Click(object sender, EventArgs e)
         {
-            //double[][] data = initTable.AsEnumerable().Select(x => new[] { Convert.ToDouble(x[0]), Convert.ToDouble(x[1]) }).ToArray();
+            
             double[] x = initTable.AsEnumerable()
             .Select(row => Convert.ToDouble(row.Field<object>(columnTitles[0]), System.Globalization.CultureInfo.InvariantCulture)).ToArray();
             double[] y = initTable.AsEnumerable()
             .Select(row => Convert.ToDouble(row.Field<object>(columnTitles[1]), System.Globalization.CultureInfo.InvariantCulture)).ToArray();
             double[] ans = LinearRegression.Solve(x, y);
-            outputTable.Columns.Add("Coefficient");
+            //Geting coefficients
+            outputTable = new DataTable();
             outputTable.Columns.Add("Value");
+            outputTable.Columns.Add("Coefficient");
+            int coefNum = 0;
             foreach (double coef in ans)
             {
                 dr = outputTable.NewRow();
                 dr[0] = coef;
+                dr[1] = "k" + coefNum++.ToString();
                 outputTable.Rows.Add(dr);
             }
+            coefNum = 0;
             outputDataView.DataSource = outputTable;
             outputDataView.Update();
+            //Calculating the approximated function
+            regTable = initTable;
+            for (int i = 0; i < regTable.Rows.Count; i++)
+            {
+                regTable.Rows[i][columnTitles[1]] = ans[0] + ans[1] * x[i];
+            }
+            //Counting the Average Approximation Error
+            double[] Y = regTable.AsEnumerable()
+            .Select(row => Convert.ToDouble(row.Field<object>(columnTitles[1]), System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+            double AAE = LinearRegression.AAE(y, Y);
+            labelAAE.Text = AAE.ToString() + '%';
+            double ffact = LinearRegression.Ffact();
+            labelFisher.Text = ffact.ToString();
+            //Drawing an approximated series
+            Series seriesReg = new Series("Regression line");
+            chart.Series.Remove(seriesReg);
+            try
+            {
+                chart.Series.Add(seriesReg);
+            }
+            catch { /*oops*/}
+            seriesReg.ChartType = SeriesChartType.Spline;
+            if (columnTitles.Length != 0)
+            {
+                seriesReg.XValueMember = columnTitles[0];
+                seriesReg.YValueMembers = columnTitles[1];
+            }
+            chart.DataSource = regTable;
         }
     }
 }

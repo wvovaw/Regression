@@ -1,0 +1,9 @@
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\bin\Debug\Multiple regression.exe.config
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\bin\Debug\Multiple regression.exe
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\bin\Debug\Multiple regression.pdb
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\obj\Debug\Multiple regression.csprojAssemblyReference.cache
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\obj\Debug\Multiple_regression.Form1.resources
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\obj\Debug\Multiple_regression.Properties.Resources.resources
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\obj\Debug\Multiple regression.csproj.GenerateResource.cache
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\obj\Debug\Multiple regression.exe
+C:\Users\vladi\Source\Repos\wvovaw\Regression\Regression\Multiple regression\obj\Debug\Multiple regression.pdb

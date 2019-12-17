@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regression", "Regression\Regression.csproj", "{966829B0-F769-430B-A190-F533E299D831}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multiple regression", "Multiple regression\Multiple regression.csproj", "{D8529DB2-F6DD-47F3-B1F8-50DF1C5638FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{966829B0-F769-430B-A190-F533E299D831}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{966829B0-F769-430B-A190-F533E299D831}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{966829B0-F769-430B-A190-F533E299D831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8529DB2-F6DD-47F3-B1F8-50DF1C5638FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8529DB2-F6DD-47F3-B1F8-50DF1C5638FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8529DB2-F6DD-47F3-B1F8-50DF1C5638FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8529DB2-F6DD-47F3-B1F8-50DF1C5638FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
