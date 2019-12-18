@@ -45,6 +45,14 @@
             this.textB1 = new System.Windows.Forms.TextBox();
             this.textB3 = new System.Windows.Forms.TextBox();
             this.textB2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textG = new System.Windows.Forms.TextBox();
+            this.S2reproduced = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Equation = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Fcalc = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PlanMatrix)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +118,7 @@
             // 
             // BtnStart
             // 
-            this.BtnStart.Location = new System.Drawing.Point(12, 472);
+            this.BtnStart.Location = new System.Drawing.Point(12, 322);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(75, 23);
             this.BtnStart.TabIndex = 1;
@@ -156,7 +164,7 @@
             // 
             // textB0
             // 
-            this.textB0.Location = new System.Drawing.Point(462, 12);
+            this.textB0.Location = new System.Drawing.Point(483, 12);
             this.textB0.Name = "textB0";
             this.textB0.ReadOnly = true;
             this.textB0.Size = new System.Drawing.Size(79, 20);
@@ -164,7 +172,7 @@
             // 
             // textB1
             // 
-            this.textB1.Location = new System.Drawing.Point(462, 39);
+            this.textB1.Location = new System.Drawing.Point(483, 39);
             this.textB1.Name = "textB1";
             this.textB1.ReadOnly = true;
             this.textB1.Size = new System.Drawing.Size(79, 20);
@@ -172,7 +180,7 @@
             // 
             // textB3
             // 
-            this.textB3.Location = new System.Drawing.Point(462, 93);
+            this.textB3.Location = new System.Drawing.Point(483, 93);
             this.textB3.Name = "textB3";
             this.textB3.ReadOnly = true;
             this.textB3.Size = new System.Drawing.Size(79, 20);
@@ -180,17 +188,94 @@
             // 
             // textB2
             // 
-            this.textB2.Location = new System.Drawing.Point(462, 66);
+            this.textB2.Location = new System.Drawing.Point(483, 66);
             this.textB2.Name = "textB2";
             this.textB2.ReadOnly = true;
             this.textB2.Size = new System.Drawing.Size(79, 20);
             this.textB2.TabIndex = 9;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(418, 141);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Gрасч.";
+            // 
+            // textG
+            // 
+            this.textG.Location = new System.Drawing.Point(483, 138);
+            this.textG.Name = "textG";
+            this.textG.ReadOnly = true;
+            this.textG.Size = new System.Drawing.Size(79, 20);
+            this.textG.TabIndex = 11;
+            // 
+            // S2reproduced
+            // 
+            this.S2reproduced.Location = new System.Drawing.Point(483, 173);
+            this.S2reproduced.Name = "S2reproduced";
+            this.S2reproduced.ReadOnly = true;
+            this.S2reproduced.Size = new System.Drawing.Size(79, 20);
+            this.S2reproduced.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(418, 176);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "S^2воспр";
+            // 
+            // Equation
+            // 
+            this.Equation.AutoSize = true;
+            this.Equation.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Equation.Location = new System.Drawing.Point(92, 261);
+            this.Equation.Name = "Equation";
+            this.Equation.Size = new System.Drawing.Size(0, 25);
+            this.Equation.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 270);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "The equation:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(421, 211);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Fрасч";
+            // 
+            // Fcalc
+            // 
+            this.Fcalc.Location = new System.Drawing.Point(483, 208);
+            this.Fcalc.Name = "Fcalc";
+            this.Fcalc.ReadOnly = true;
+            this.Fcalc.Size = new System.Drawing.Size(79, 20);
+            this.Fcalc.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 507);
+            this.ClientSize = new System.Drawing.Size(574, 355);
+            this.Controls.Add(this.Fcalc);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Equation);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.S2reproduced);
+            this.Controls.Add(this.textG);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.textB2);
             this.Controls.Add(this.textB3);
             this.Controls.Add(this.textB1);
@@ -229,6 +314,14 @@
         private System.Windows.Forms.TextBox textB1;
         private System.Windows.Forms.TextBox textB3;
         private System.Windows.Forms.TextBox textB2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textG;
+        private System.Windows.Forms.TextBox S2reproduced;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label Equation;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox Fcalc;
     }
 }
 
