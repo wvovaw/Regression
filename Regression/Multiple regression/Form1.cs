@@ -30,7 +30,7 @@ namespace Multiple_regression
         double[] coefs = new double[4];
         double[] yapp = new double[8];
         double Fc = 0;
-       
+
         private void Form1_Load(object sender, EventArgs e)
         {
             PlanMatrix.DataSource = initTable;
@@ -40,31 +40,57 @@ namespace Multiple_regression
                 initTable.Rows.Add(dr);
             }
         }
-
+        private void BtnXinput_Click(object sender, EventArgs e)
+        {
+            double y = 0;
+            y = coefs[0] + coefs[1] * Convert.ToDouble(textX1input.Text) + coefs[2] * Convert.ToDouble(textX2input.Text) + coefs[3] * Convert.ToDouble(textX3input.Text);
+            textYoutput.Text = y.ToString();
+        }
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 8; i++)
+            try
             {
-                for (int j = 0; j < 4; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if (PlanMatrix.Rows[i].Cells[j].Value.ToString() == "+")
-                        plan[i, j] = 1;
-                    else if (PlanMatrix.Rows[i].Cells[j].Value.ToString() == "-")
-                        plan[i, j] = -1;
-                    else
+                    for (int j = 0; j < 4; j++)
                     {
-                        MessageBox.Show("Wrong symbol in the plan matrix. Make sure you have entered everything correctly. " + PlanMatrix.Rows[i].Cells[j].Value.ToString());
-                        plan = new int[8, 4];
-                        return;
+
+                        if (PlanMatrix.Rows[i].Cells[j].Value.ToString() == "+")
+                            plan[i, j] = 1;
+                        else if (PlanMatrix.Rows[i].Cells[j].Value.ToString() == "-")
+                            plan[i, j] = -1;
+                        else
+                        {
+                            MessageBox.Show("Wrong symbol on. Make sure you have inputed everything right." + '(' + i.ToString() + ", " + j.ToString() + ')');
+                            plan = new int[8, 4];
+                            return;
+                        }
                     }
                 }
+                try
+                {
+                    for (int i = 0; i < 8; i++)
+                    {
+                        y1[i] = Convert.ToDouble(PlanMatrix[4, i].Value);
+                        y2[i] = Convert.ToDouble(PlanMatrix[5, i].Value);
+                        y3[i] = Convert.ToDouble(PlanMatrix[6, i].Value);
+                        ymid[i] = (y1[i] + y2[i] + y3[i]) / 3;
+                    }
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Wrong symbol. Make sure you have inputed everything right.");
+                    return;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            catch (NullReferenceException)
             {
-                y1[i] = Convert.ToDouble(PlanMatrix[4, i].Value);
-                y2[i] = Convert.ToDouble(PlanMatrix[5, i].Value);
-                y3[i] = Convert.ToDouble(PlanMatrix[6, i].Value);
-                ymid[i] = (y1[i] + y2[i] + y3[i]) / 3;
+                MessageBox.Show("Error: Empty input field.");
+                return;
             }
             for (int i = 0; i < 8; i++)
             {
@@ -78,7 +104,7 @@ namespace Multiple_regression
             {
                 textG.BackColor = Color.SpringGreen;
                 Sre = (Ssum / 8);
-                S2reproduced.Text = Sre.ToString();
+                //S2reproduced.Text = Sre.ToString();
 
                 for (int i = 0; i < 4; i++)
                 {
@@ -111,9 +137,15 @@ namespace Multiple_regression
                 Sad = Sad * 3 / 4;
                 Fc = Sad / Sre;
                 Fcalc.Text = Fc.ToString();
-                if (Fc <= 3.7294) Fcalc.BackColor = Color.SpringGreen;
+                if (Fc <= 3.7294)
+                {
+                    Fcalc.BackColor = Color.SpringGreen;
+                    textX1input.Enabled = true;
+                    textX2input.Enabled = true;
+                    textX3input.Enabled = true;
+                    BtnCalc.Enabled = true;
+                }
                 else Fcalc.BackColor = Color.IndianRed;
-
             }
             else textG.BackColor = Color.IndianRed;
 
@@ -123,6 +155,11 @@ namespace Multiple_regression
             Sad = 0;
             G = 0;
             Fc = 0;
+            textG.BackColor = Fcalc.BackColor = textB0.BackColor;
+            textX1input.Enabled = false;
+            textX2input.Enabled = false;
+            textX3input.Enabled = false;
+            BtnCalc.Enabled = false;
         }
     }
 }
