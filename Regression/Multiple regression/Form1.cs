@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Multiple_regression
@@ -23,14 +18,12 @@ namespace Multiple_regression
         double[] y2 = new double[8];
         double[] y3 = new double[8];
         double[] ymid = new double[8];
-
         double[] S2 = new double[8];
         double Smax = 0, Ssum = 0, Sre, Sad = 0;
         double G = 0;
         double[] coefs = new double[4];
         double[] yapp = new double[8];
         double Fc = 0;
-
         private void Form1_Load(object sender, EventArgs e)
         {
             PlanMatrix.DataSource = initTable;
@@ -52,13 +45,24 @@ namespace Multiple_regression
         }
         private void BtnStart_Click(object sender, EventArgs e)
         {
+            Smax = 0;
+            Ssum = 0;
+            Sre = 0;
+            Sad = 0;
+            G = 0;
+            Fc = 0;
+            textG.BackColor = Fcalc.BackColor = textB0.BackColor;
+            textX1input.Enabled = false;
+            textX2input.Enabled = false;
+            textX3input.Enabled = false;
+            BtnCalc.Enabled = false;
+
             try
             {
                 for (int i = 0; i < 8; i++)
                 {
                     for (int j = 0; j < 4; j++)
                     {
-
                         if (PlanMatrix.Rows[i].Cells[j].Value.ToString() == "+")
                             plan[i, j] = 1;
                         else if (PlanMatrix.Rows[i].Cells[j].Value.ToString() == "-")
@@ -105,7 +109,6 @@ namespace Multiple_regression
                 textG.BackColor = Color.SpringGreen;
                 Sre = (Ssum / 8);
                 //S2reproduced.Text = Sre.ToString();
-
                 for (int i = 0; i < 4; i++)
                 {
                     coefs[i] = 0;
@@ -120,18 +123,15 @@ namespace Multiple_regression
                 textB2.Text = coefs[2].ToString();
                 textB3.Text = coefs[3].ToString();
                 Equation.Text = "y =";
-                if (coefs[0] < 0) Equation.Text += " — ";
-                else Equation.Text += " + ";
-                Equation.Text += Math.Round(Math.Abs(coefs[0]), 3).ToString();
+                Equation.Text += Math.Round(coefs[0], 4).ToString();
                 for (int i = 1; i < 4; i++)
                 {
                     if (coefs[i] < 0) Equation.Text += " — ";
                     else Equation.Text += " + ";
-                    Equation.Text += Math.Round(Math.Abs(coefs[i]), 3).ToString() + "x" + i.ToString();
+                    Equation.Text += Math.Round(Math.Abs(coefs[i]), 4).ToString() + "x" + i.ToString();
                 }
                 for (int i = 0; i < 8; i++)
                     yapp[i] = coefs[0] + coefs[1] * plan[i, 1] + coefs[2] * plan[i, 2] + coefs[3] * plan[i, 3];
-
                 for (int i = 0; i < 8; i++)
                     Sad += Math.Pow((ymid[i] - yapp[i]), 2);
                 Sad = Sad * 3 / 4;
@@ -148,18 +148,6 @@ namespace Multiple_regression
                 else Fcalc.BackColor = Color.IndianRed;
             }
             else textG.BackColor = Color.IndianRed;
-
-            Smax = 0;
-            Ssum = 0;
-            Sre = 0;
-            Sad = 0;
-            G = 0;
-            Fc = 0;
-            textG.BackColor = Fcalc.BackColor = textB0.BackColor;
-            textX1input.Enabled = false;
-            textX2input.Enabled = false;
-            textX3input.Enabled = false;
-            BtnCalc.Enabled = false;
         }
     }
 }
